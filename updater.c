@@ -151,6 +151,18 @@ int main()
     FILE* actualpatch = NULL;
 
     char newtype1[100] = "newGsen", type1[100] = "Gsen", typedata[100] = "data", newtype2[100] = "newImage", type2[100] = "Image", typedata2[100] = "image", newtype3[100] = "newEvimage", type3[100] = "Evimage", typedata3[100] = "evimage";
+    char os;
+
+    if (system("ls") == 0)
+    {
+	printf("LINUX");
+        os = 'L';
+    }
+    else
+    {
+ 	printf("WINDOWS");
+	os = 'W';
+    }    
 
     OpeningFiles(newpatch, actualpatch, newtype1, type1, typedata);
 
