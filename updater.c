@@ -11,7 +11,7 @@ void delay(unsigned int ms)
     while (goal > clock());
 }
 
-void runbatch(char *type)
+void runbatchwindows(char *type)
 {
     ///Permet en concaténant les chaines, d'ouvrir le site web et de télécharger la donnée envoyée
 
@@ -42,14 +42,48 @@ void runbatch(char *type)
     //Quasiment le même principe qu'au dessus
 }
 
-void OpeningFiles(FILE* newpatch, FILE* actualpatch, char *newtype, char *type, char *typedata)
+void runbatchlinux(char *type)
+{
+    ///Permet en concaténant les chaines, d'ouvrir le site web et de télécharger la donnée envoyée
+
+    char cmd1[100] = "wget http://dothackers.fansub.ovh/VERSIONS/", cmd2[100] = "mv ", *dir = " VERSIONS\\";
+    char tmp[100];
+
+    //On concatène et copie les chaines afin de pouvoir créer le fichier de version: prototype -> on copie la commande dans un tmp, on ajoute le type au tmp, puis l'extension, et enfin on copie le tmp dans cmd
+
+    strcpy(tmp, cmd1);
+    strcat(tmp, type);
+    strcat(tmp, ".ver");
+    strcpy(cmd1, tmp);
+
+    printf("\n%s\n", cmd1);
+    system(cmd1);
+
+
+
+    system("mkdir VERSIONS");
+
+    strcat(cmd2, type);
+    strcat(cmd2, ".ver");
+    strcat(cmd2, dir);
+
+    printf("%s", cmd2);
+    system(cmd2);
+
+    //Quasiment le même principe qu'au dessus
+}
+
+void OpeningFiles(FILE* newpatch, FILE* actualpatch, char *newtype, char *type, char *typedata, char os)
 {
     ///Ouvre les fichiers en concaténant les variables, les envoies dans la fonction runbatch, puis fait les opé nécessaires
 
     char *VERSIONS = "VERSIONS/", tmp[100];
     int newver, actualver;
 
-    runbatch(newtype);
+    if (os == 'L')
+        runbatchlinux(newtype);
+    else
+        runbatchwindows(newtype);
 
     strcat(typedata, ".xp3");
 
@@ -153,32 +187,35 @@ int main()
     char newtype1[100] = "newGsen", type1[100] = "Gsen", typedata[100] = "data", newtype2[100] = "newImage", type2[100] = "Image", typedata2[100] = "image", newtype3[100] = "newEvimage", type3[100] = "Evimage", typedata3[100] = "evimage";
     char os;
 
-    if (system("ls") == 0)
+    if (system("lsb_release -a") == 0)
     {
-	printf("LINUX");
+		printf("LINUX\n\n");
         os = 'L';
     }
     else
     {
- 	printf("WINDOWS");
-	os = 'W';
-    }    
+		printf("WINDOWS\n\n");
+		os = 'W';
+    }
 
-    OpeningFiles(newpatch, actualpatch, newtype1, type1, typedata);
-
-    printf("\n\n");
-    delay(2);
-
-    OpeningFiles(newpatch, actualpatch, newtype2, type2, typedata2);
+    OpeningFiles(newpatch, actualpatch, newtype1, type1, typedata, os);
 
     printf("\n\n");
     delay(2);
 
-    OpeningFiles(newpatch, actualpatch, newtype3, type3, typedata3);
+    OpeningFiles(newpatch, actualpatch, newtype2, type2, typedata2, os);
 
     printf("\n\n");
     delay(2);
 
-    system("START gstring.exe");    //Démarre le jeu puis quitte la console
+    OpeningFiles(newpatch, actualpatch, newtype3, type3, typedata3, os);
+
+    printf("\n\n");
+    delay(2);
+
+    if (os == 'W')
+        system("START gstring.exe");    //Démarre le jeu puis quitte la console
+    else
+        system("wine gstring.exe");
     return 0;
 }
