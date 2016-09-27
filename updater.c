@@ -189,13 +189,12 @@ int main()
 
     if (system("lsb_release -a") == 0)
     {
-		printf("LINUX\n\n");
         os = 'L';
     }
     else
     {
-		printf("WINDOWS\n\n");
-		os = 'W';
+	printf("WINDOWS\n\n");
+	os = 'W';
     }
 
     OpeningFiles(newpatch, actualpatch, newtype1, type1, typedata, os);
