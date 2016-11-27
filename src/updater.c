@@ -1,4 +1,5 @@
 #include "include/main.h"
+#include "include/my.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,7 +7,6 @@
 void	openingfiles(FILE* newpatch, FILE* actualpatch, char *newtype, char *type, char *typedata, char os)
 {
   ///Ouvre les fichiers en concaténant les variables, les envoies dans la fonction runbatch, puis fait les opé nécessaires
-  char	*VERSIONS = "VERSIONS/", tmp[100];
   int	newver, actualver;
 
   if (os == 'L')
@@ -18,7 +18,6 @@ void	openingfiles(FILE* newpatch, FILE* actualpatch, char *newtype, char *type, 
   conc_new(newtype);
   conc_old(type);
   newpatch = fopen(newtype, "r+");
-  printf("\n\n%s\n\n", newtype);
   if (newpatch != NULL)   //On ouvre le .ver téléchargé
     {
       actualpatch = fopen(type, "rw+");
@@ -29,7 +28,7 @@ void	openingfiles(FILE* newpatch, FILE* actualpatch, char *newtype, char *type, 
 	  printf("Nouvelle version : %d \nVersion actuelle : %d\n\n", newver, actualver);
 	  if (newver > actualver)
 	    {
-	      char	cmd[100] = "wget http://dothackers.fansub.ovh/update/";
+	      char cmd[100] = "wget http://dothackers.fansub.ovh/update/";
 	      strcat(cmd, typedata);
 	      remove(typedata);
 	      if (system(cmd) == 1)
@@ -48,7 +47,7 @@ void	openingfiles(FILE* newpatch, FILE* actualpatch, char *newtype, char *type, 
 	{
 	  actualpatch = fopen(type, "w+");
 	  fputs("1", actualpatch);
-	  char	cmd[100] = "wget http://dothackers.fansub.ovh/update/";
+	  char cmd[100] = "wget http://dothackers.fansub.ovh/update/";
 	  strcat(cmd, typedata);
 	  printf("%s", cmd);
 	  remove(typedata);
@@ -76,10 +75,23 @@ int	main()
   char	os;
 
   if (system("lsb_release -a") == 0)
-    os = 'L';
+    {
+      if (system("ping -c 1 www.dothackers-fansub.xyz &>/dev/tmp") != 0)
+	{
+	  printf("Erreur réseau !");
+	  system("wine gstring.exe");
+	  return (0);
+	}
+      os = 'L';
+    }
   else
     {
-      printf("WINDOWS\n\n");
+      if (system("ping www.dothackers-fansub.xyz &>NUL") != 0)
+	{
+	  printf("Erreur reseau !");
+	  system("START gstring.exe");
+	  return (0);
+	}
       os = 'W';
     }
   openingfiles(newpatch, actualpatch, newtype1, type1, typedata, os);

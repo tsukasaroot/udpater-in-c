@@ -5,7 +5,7 @@
 ** Login   <jordan.roucom@epitech.net>
 ** 
 ** Started on  Wed Oct 19 10:45:29 2016 Jordan Rouco miguez
-** Last update Wed Oct 19 11:17:21 2016 Jordan Rouco miguez
+** Last update Sun Nov 27 23:00:09 2016 Jordan Rouco miguez
 */
 
 #include "../include/main.h"
@@ -25,12 +25,12 @@ void    runbatchlinux(char *type)
 
   strcpy(tmp, cmd1);
   strcat(tmp, type);
-  strcat(tmp, ".ver");
+  strcat(tmp, ".ver &>/dev/tmp");
   strcpy(cmd1, tmp);
   system(cmd1);
-  system("mkdir VERSIONS");
+  system("mkdir VERSIONS &>/dev/tmp");
   strcat(cmd2, type);
-  strcat(cmd2, ".ver");
+  strcat(cmd2, ".ver &>/dev/tmp");
   strcat(cmd2, dir);
   system(cmd2);
 }
