@@ -2,3 +2,4 @@
 *.xp3
 #ingnorer le dossier VERSIONS
 VERSIONS
+*.o

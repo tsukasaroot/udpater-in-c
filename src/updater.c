@@ -86,7 +86,7 @@ int	main()
     }
   else
     {
-      if (system("ping www.dothackers-fansub.xyz &>NUL") != 0)
+      if (system("ping 1 www.dothackers-fansub.xyz -n 1 > NUL") != 0)
 	{
 	  printf("Erreur reseau !");
 	  system("START gstring.exe");

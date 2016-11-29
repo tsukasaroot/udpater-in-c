@@ -5,7 +5,7 @@
 ** Login   <jordan.roucom@epitech.net>
 ** 
 ** Started on  Wed Oct 19 10:43:19 2016 Jordan Rouco miguez
-** Last update Wed Oct 19 11:17:31 2016 Jordan Rouco miguez
+** Last update Mon Nov 28 14:43:34 2016 Jordan Rouco miguez
 */
 
 #include "../include/main.h"
@@ -27,12 +27,12 @@ void    runbatchwindows(char *type)
 
   strcpy(tmp, cmd1);
   strcat(tmp, type);
-  strcat(tmp, ".ver");
+  strcat(tmp, ".ver > NUL");
   strcpy(cmd1, tmp);
   system(cmd1);
   system("MKDIR VERSIONS");
   strcat(cmd2, type);
-  strcat(cmd2, ".ver");
+  strcat(cmd2, ".ver > NUL");
   strcat(cmd2, dir);
   system(cmd2);
 }
