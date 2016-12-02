@@ -1,5 +1,3 @@
-#include "include/main.h"
-#include "include/my.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -28,11 +26,11 @@ void	openingfiles(FILE* newpatch, FILE* actualpatch, char *newtype, char *type, 
 	  printf("Nouvelle version : %d \nVersion actuelle : %d\n\n", newver, actualver);
 	  if (newver > actualver)
 	    {
-	      char cmd[100] = "wget http://dothackers.fansub.ovh/update/";
+	      char cmd[100] = "wget http://dothackers-fansub.xyz/update/";
 	      strcat(cmd, typedata);
 	      remove(typedata);
 	      if (system(cmd) == 1)
-		printf("Erreur du téléchargement de la nouvelle version");
+		  printf("Erreur du téléchargement de la nouvelle version");
 	      delay(9000);
 	    }
 	  else if (newver == actualver)
@@ -47,7 +45,7 @@ void	openingfiles(FILE* newpatch, FILE* actualpatch, char *newtype, char *type, 
 	{
 	  actualpatch = fopen(type, "w+");
 	  fputs("1", actualpatch);
-	  char cmd[100] = "wget http://dothackers.fansub.ovh/update/";
+	  char cmd[100] = "wget http://dothackers-fansub.xyz/update/";
 	  strcat(cmd, typedata);
 	  printf("%s", cmd);
 	  remove(typedata);
@@ -86,7 +84,7 @@ int	main()
     }
   else
     {
-      if (system("ping 1 www.dothackers-fansub.xyz -n 1 > NUL") != 0)
+      if (system("ping -n 1 www.dothackers-fansub.xyz\n 2> NUL") != 0)
 	{
 	  printf("Erreur reseau !");
 	  system("START gstring.exe");
