@@ -5,10 +5,10 @@
 ** Login   <jordan.roucom@epitech.net>
 **
 ** Started on  Thu Oct 13 08:16:05 2016 Jordan Rouco miguez
-** Last update Sun Nov 20 17:16:23 2016 Jordan Rouco miguez
+** Last update Wed Nov 30 14:12:16 2016 Jordan Rouco miguez
 */
 
-#ifndef	MY_H_
+#ifndef MY_H_
 # define MY_H_
 
 char	*my_strdup(char *src);
@@ -61,4 +61,4 @@ void	fg_S();
 int	my_printf(char *, ...);
 int	my_convert_base(unsigned long int, char *);
 
-#endif	/* MY_H_ */
+#endif /* !MY_H_ */

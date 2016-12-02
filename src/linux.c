@@ -5,7 +5,7 @@
 ** Login   <jordan.roucom@epitech.net>
 ** 
 ** Started on  Wed Oct 19 10:45:29 2016 Jordan Rouco miguez
-** Last update Mon Nov 28 14:48:13 2016 Jordan Rouco miguez
+** Last update Fri Dec  2 15:46:33 2016 Jordan Rouco miguez
 */
 
 #include "../include/main.h"
@@ -20,12 +20,12 @@
 void    runbatchlinux(char *type)
 {
   ///Permet en concaténant les chaines, d'ouvrir le site web et de télécharger la donnée envoyée
-  char  cmd1[100] = "wget http://dothackers.fansub.ovh/VERSIONS/",
+  char  cmd1[100] = "wget http://dothackers-fansub.xyz/VERSIONS/",
     cmd2[100] = "mv ", *dir = " VERSIONS\\", tmp[100];
 
   strcpy(tmp, cmd1);
   strcat(tmp, type);
-  strcat(tmp, ".ver &>/dev/tmp");
+  strcat(tmp, ".ver /*&>/dev/tmp");
   strcpy(cmd1, tmp);
   system(cmd1);
   system("mkdir VERSIONS &>/dev/tmp");
