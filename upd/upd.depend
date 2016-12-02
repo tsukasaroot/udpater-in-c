@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1480692908 source:c:\users\jordan\documents\github\updater-in-c\src\conc.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+
+1480692908 source:c:\users\jordan\documents\github\updater-in-c\src\delay.c
+	<time.h>
+
+1480696104 source:c:\users\jordan\documents\github\updater-in-c\src\linux.c
+	"../include/main.h"
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+
+1480692908 c:\users\jordan\documents\github\updater-in-c\include\main.h
+
+1480696299 source:c:\users\jordan\documents\github\updater-in-c\src\updater.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1480696251 source:c:\users\jordan\documents\github\updater-in-c\src\windows.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+
