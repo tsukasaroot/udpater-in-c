@@ -30,11 +30,9 @@ void    runbatchwindows(char *type)
   strcat(tmp, ".ver 2> NUL");
   strcpy(cmd1, tmp);
   system(cmd1);
-  printf("%s", cmd1);
   system("MKDIR VERSIONS 2> NUL");
   strcat(cmd2, type);
   strcat(cmd2, ".ver 2> NUL");
   strcat(cmd2, dir);
   system(cmd2);
-  printf("%s", cmd1);
 }
