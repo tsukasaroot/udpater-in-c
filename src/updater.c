@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../include/main.h"
 
 void	openingfiles(FILE* newpatch, FILE* actualpatch, char *newtype, char *type, char *typedata, char os)
 {
@@ -14,6 +15,7 @@ void	openingfiles(FILE* newpatch, FILE* actualpatch, char *newtype, char *type, 
 
   strcat(typedata, ".xp3");
   conc_new(newtype);
+  printf("%s", newtype);
   conc_old(type);
   newpatch = fopen(newtype, "r+");
   if (newpatch != NULL)   //On ouvre le .ver téléchargé
@@ -74,7 +76,7 @@ int	main()
 
   if (system("lsb_release -a") == 0)
     {
-      if (system("ping -c 1 www.dothackers-fansub.xyz &>/dev/tmp") != 0)
+      if (system("ping -c 1 www.dothackers-fansub.xyz\n &>/dev/tmp") != 0)
 	{
 	  printf("Erreur réseau !");
 	  system("wine gstring.exe");

@@ -7,19 +7,19 @@
 ## Last update Fri Nov 25 16:46:39 2016 Jordan Rouco miguez
 ##
 
-CC	=	gcc
+CC	=	i586-mingw32msvc-gcc -std=c99
 
 SRCS	=	src/conc.c	\
-		src/delay.c	\
 		src/linux.c	\
 		src/windows.c	\
-		src/updater.c
+		src/updater.c	\
+		src/delay.c
 
 RM	=	rm -f
 
 OBJS	=	$(SRCS:.c=.o)
 
-NAME	=	updater
+NAME	=	updater.exe
 
 CFLAGS	=	-Wall -Wextra -Werror
 

@@ -14,7 +14,7 @@
 void	delay(unsigned int ms);
 void	runbatchlinux(char *type);
 void	runbatchwindows(char *type);
-char	conc_new(char *newtype);
-char	conc_old(char *type);
+void	conc_new(char *);
+void	conc_old(char *);
 
 #endif /* !DEL_H_ */

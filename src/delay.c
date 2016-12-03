@@ -9,6 +9,7 @@
 */
 
 #include <time.h>
+#include "../include/main.h"
 
 void    delay(unsigned int ms)
 {
