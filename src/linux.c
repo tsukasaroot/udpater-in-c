@@ -13,9 +13,11 @@
 #include <stdio.h>
 #include <string.h>
 
-/*On concatène et copie les chaines afin de pouvoir créer le fichier de version: prototype ->
-  on copie la commande dans un tmp, on ajoute le type au tmp, puis l'extension,
-  et enfin on copie le tmp dans cmd*/
+/*
+** On concatène et copie les chaines afin de pouvoir créer le fichier de version: prototype ->
+** on copie la commande dans un tmp, on ajoute le type au tmp, puis l'extension,
+** et enfin on copie le tmp dans cmd
+*/
 
 void    runbatchlinux(char *type)
 {
@@ -25,12 +27,12 @@ void    runbatchlinux(char *type)
 
   strcpy(tmp, cmd1);
   strcat(tmp, type);
-  strcat(tmp, ".ver &>/dev/tmp");
+  strcat(tmp, ".ver &>./tmp");
   strcpy(cmd1, tmp);
   system(cmd1);
-  system("mkdir VERSIONS &>/dev/tmp");
+  system("mkdir VERSIONS &>./tmp");
   strcat(cmd2, type);
-  strcat(cmd2, ".ver &>/dev/tmp");
+  strcat(cmd2, ".ver &>./tmp");
   strcat(cmd2, dir);
   system(cmd2);
 }

@@ -4,7 +4,7 @@
 ## Made by Jordan Rouco miguez
 ## Login   <jordan.roucom@epitech.net>
 ##
-## Last update Fri Nov 25 16:46:39 2016 Jordan Rouco miguez
+## Last update Sat Feb 25 16:54:05 2017 DESKTOP-D27SM6T
 ##
 
 CC	=	i586-mingw32msvc-gcc -std=c99
@@ -23,17 +23,23 @@ NAME	=	updater.exe
 
 CFLAGS	=	-Wall -Wextra -Werror
 
+OPT	=	cd make_linux && make
+
 all:	$(NAME)
 
 $(NAME): $(OBJS)
-	$(OPT)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+#	$(OPT)
+wclean:
+	$(RM) $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
+#	$(OPT) clean
 
-fclean: clean
+fclean: wclean
 	$(RM) $(NAME)
+#	$(OPT) fclean
 
 re: fclean all
 

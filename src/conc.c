@@ -13,11 +13,16 @@
 #include <stdlib.h>
 #include "../include/main.h"
 
+/*
+** On récupère le type de l'ancienne version et le nouveau
+** type qu'on concatène avec les différents 's'
+*/
+
 void	conc_old(char *type)
 {
   char	*VERSIONS = "VERSIONS/", tmp[100];
 
-  strcat(type, ".ver");       //On créée le chemin pour le fichier .ver actuellement installée
+  strcat(type, ".ver");
   strcpy(tmp, VERSIONS);
   strcat(tmp, type);
   strcpy(type, tmp);
@@ -27,7 +32,7 @@ void	conc_new(char *newtype)
 {
   char	*VERSIONS = "VERSIONS/", tmp[100];
 
-  strcpy(tmp, VERSIONS);      //On créée le chemin pour le fichier .ver téléchargé
+  strcpy(tmp, VERSIONS);
   strcat(newtype, ".ver");
   strcat(tmp, newtype);
   strcpy(newtype, tmp);

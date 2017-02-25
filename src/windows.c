@@ -13,11 +13,13 @@
 #include <string.h>
 #include "../include/main.h"
 
-/*On concatène et copie les chaines afin de pouvoir
-  créer le fichier de version: prototype ->
-  on copie la commande dans un tmp, on
-  ajoute le type au tmp, puis l'extension,
-  et enfin on copie le tmp dans cmd*/
+/*
+** On concatène et copie les chaines afin de pouvoir
+** créer le fichier de version: prototype ->
+** on copie la commande dans un tmp, on
+** ajoute le type au tmp, puis l'extension,
+** et enfin on copie le tmp dans cmd
+*/
 
 void    runbatchwindows(char *type)
 {
@@ -29,6 +31,7 @@ void    runbatchwindows(char *type)
   strcat(tmp, type);
   strcat(tmp, ".ver 2> NUL");
   strcpy(cmd1, tmp);
+  strcat(cmd1, " --no-check-certificate");
   system(cmd1);
   system("MKDIR VERSIONS 2> NUL");
   strcat(cmd2, type);
