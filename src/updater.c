@@ -27,7 +27,7 @@ void	openingfiles(FILE* newpatch, FILE* actualpatch, char *newtype, char *type, 
 	  printf("Nouvelle version : %d \nVersion actuelle : %d\n\n", newver, actualver);
 	  if (newver > actualver)
 	    {
-	      char cmd[100] = "wget http://dothackers-fansub.xyz/update/";
+	      char cmd[100] = "wget http://dothackers-fansub.fr/update/";
 	      strcat(cmd, typedata);
 	      strcat(cmd, " --no-check-certificate");
 	      remove(typedata);
@@ -46,7 +46,7 @@ void	openingfiles(FILE* newpatch, FILE* actualpatch, char *newtype, char *type, 
 	{
 	  actualpatch = fopen(type, "w+");
 	  fputs("1", actualpatch);
-	  char cmd[100] = "wget http://dothackers-fansub.xyz/update/";
+	  char cmd[100] = "wget http://dothackers-fansub.fr/update/";
 	  strcat(cmd, typedata);
       strcat(cmd, " --no-check-certificate");
 	  printf("%s", cmd);
@@ -80,10 +80,10 @@ int	main()
   char	newtype1[100] = "newGsen", type1[100] = "Gsen", typedata[100] = "data", newtype2[100] = "newImage", type2[100] = "Image", typedata2[100] = "image", newtype3[100] = "newEvimage", type3[100] = "Evimage", typedata3[100] = "evimage";
   char	os;
 
-  system("wget http://dothackers-fansub.xyz/VERSIONS/newGsen.ver --no-check-certificate");
+  system("wget http://dothackers-fansub.fr/VERSIONS/newGsen.ver --no-check-certificate");
   if (system("lsb_release -a") == 0)
     {
-      if (system("sudo ping -c 1 www.dothackers-fansub.xyz\n") != 0)
+      if (system("sudo ping -c 1 www.dothackers-fansub.fr\n") != 0)
 	{
 	  printf("Erreur réseau !");
 	  system("wine gstring.exe");
@@ -93,7 +93,7 @@ int	main()
     }
   else
     {
-      if (system("ping -n 1 www.dothackers-fansub.xyz\n 2> NUL") != 0)
+      if (system("ping -n 1 www.dothackers-fansub.fr\n 2> NUL") != 0)
 	{
 	  printf("Erreur reseau !\n");
 	  system("START gstring.exe");

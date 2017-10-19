@@ -5,7 +5,7 @@
 ** Login   <jordan.roucom@epitech.net>
 **
 ** Started on  Wed Oct 19 10:45:29 2016 Jordan Rouco miguez
-** Last update Fri Dec  2 15:46:33 2016 Jordan Rouco miguez
+** Last update Thu Oct 19 16:48:56 2017 Tsukasa
 */
 
 #include "../include/main.h"
@@ -22,7 +22,7 @@
 void    runbatchlinux(char *type)
 {
   ///Permet en concaténant les chaines, d'ouvrir le site web et de télécharger la donnée envoyée
-  char  cmd1[100] = "wget http://dothackers-fansub.xyz/VERSIONS/",
+  char  cmd1[100] = "wget http://dothackers-fansub.fr/VERSIONS/",
     cmd2[100] = "mv ", *dir = " VERSIONS\\", tmp[100];
 
   strcpy(tmp, cmd1);
