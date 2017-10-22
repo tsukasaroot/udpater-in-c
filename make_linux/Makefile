@@ -12,7 +12,7 @@ CC		=	gcc -std=c99
 
 RM		=	rm -f
 
-CFLAGS		=	-Wall
+CFLAGS		=	-Wall -Wextra -fno-builtin -I../include
 
 all: $(NAME)
 

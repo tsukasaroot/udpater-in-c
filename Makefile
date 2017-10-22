@@ -4,7 +4,7 @@
 ## Made by Jordan Rouco miguez
 ## Login   <jordan.roucom@epitech.net>
 ##
-## Last update Thu Oct 19 16:42:43 2017 Tsukasa
+## Last update Sun Oct 22 12:08:15 2017 Tsukasa
 ##
 
 CC	=	i686-w64-mingw32-gcc -std=c99
@@ -21,7 +21,7 @@ OBJS	=	$(SRCS:.c=.o)
 
 NAME	=	updater.exe
 
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror -fno-builtin -Iinclude
 
 OPT	=	cd make_linux && make
 
