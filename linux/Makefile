@@ -1,18 +1,14 @@
-SRCS		=	../src/conc.c		\
-		../src/delay.c		\
-		../src/linux.c		\
-		../src/updater.c	\
-		../src/windows.c
+SRCS		=	src/updater.c
 
 OBJS		=	$(SRCS:.c=.o)
 
-NAME		=	../updater
+NAME		=	updater
 
 CC		=	gcc -std=c99
 
 RM		=	rm -f
 
-CFLAGS		=	-Wall -Wextra -fno-builtin -I../include
+CFLAGS		=	-Wall -Wextra -fno-builtin -Iinclude
 
 all: $(NAME)
 

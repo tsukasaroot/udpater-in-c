@@ -1,8 +1,0 @@
-#ifndef UPDATER_H
-# define UPDATER_H
-
-void conc_old(char *);
-void conc_new(char *);
-void runbatchlinux(char *);
-
-#endif
