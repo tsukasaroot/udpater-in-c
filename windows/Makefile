@@ -4,12 +4,12 @@
 ## Made by Jordan Rouco miguez
 ## Login   <jordan.roucom@epitech.net>
 ##
-## Last update Wed Nov  1 10:51:32 2017 Tsukasa
+## Last update Wed Nov  1 14:04:21 2017 Tsukasa
 ##
 
 CC	=	i686-w64-mingw32-gcc -std=c99
 
-SRCS	=	updater.c
+SRCS	=	src/updater.c
 
 RM	=	rm -f
 

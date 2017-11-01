@@ -25,9 +25,6 @@ int check_newver(char *path, datas *datas)
 	strcat(type, ".ver");
 	fd = fopen(type, "r");
 	if (fd != NULL) {
-		fscanf(fd, "%f", &datas->nversion);
-		fprintf(stdout, "%s -> \n		Version actuelle : %f\n\n", path, datas->version);
-		fprintf(stdout, "		Version en ligne : %f\n\n", datas->nversion);
 		if (datas->version < datas->nversion)
 			return (1);
 		else
@@ -56,7 +53,7 @@ int get_file(char *path, datas *datas)
 	return (0);
 }
 
-int get_ver(float *version, char *path, datas *datas)
+int get_ver(char *path, datas *datas)
 {
 	FILE *fd = NULL;
 	char version_path[100] = "VERSIONS/";
@@ -67,7 +64,6 @@ int get_ver(float *version, char *path, datas *datas)
 	strcat(version_path, ".ver");
 	fd = fopen(version_path, "r+");
 	if (fd != NULL) {
-		fscanf(fd, "%f", version);
 		get_file(path, datas);
 		strcat(cmd, "new");
 		strcat(cmd, path);
@@ -101,20 +97,35 @@ void check_dir()
 int main()
 {
 	datas datas;
+	int v1;
+	int v1_1;
+	int v2;
+	int v2_1;
+	int v3;
+	int v3_1;
 
 	datas.site = malloc(sizeof(char) * (32 + 1));
 	datas.site = "https://www.dothackers-fansub.fr";
 	if (system("ping -c 2 www.dothackers-fansub.fr > NUL") != 0) {
 		fprintf(stdout, "Erreur reseau !\n Verifiez que vous soyez connectes et retentez.\n \
-Si après un nouveau test, vous avez de nouveau ce message d'erreur, \nle site est en maintenance ou rencontre \
+Si apres un nouveau test, vous avez de nouveau ce message d'erreur, \nle site est en maintenance ou rencontre \
 des problemes de connection.\n");
 		return (-1);
 	}
 	fprintf(stdout, "-----------------------------------------------------------------\n\n");
 	check_dir();
-	get_ver(&datas.version, "evimage", &datas);
-	get_ver(&datas.version, "data", &datas);
-	get_ver(&datas.version, "image", &datas);
+	get_ver("evimage", &datas);
+	clrscr();
+	v1 = datas.version;
+	v1_1 = datas.nversion;
+	get_ver("data", &datas);
+	clrscr();
+	v2 = datas.version;
+	v2_1 = datas.nversion;
+	get_ver("image", &datas);
+	clrscr();
+	fprintf(stdout, "Version actuelle evimage: %f\n", v1);
+	fprintf(stdout, "Version en ligne evimage %f\n", v1_1);
 	remove("newevimage.ver");
 	remove("newdata.ver");
 	remove("newimage.ver");

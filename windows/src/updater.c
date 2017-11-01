@@ -106,7 +106,7 @@ int main()
 	datas.site = "https://www.dothackers-fansub.fr";
 	if (system("ping -n 1 www.dothackers-fansub.fr 2> NUL") != 0) {
 		fprintf(stdout, "Erreur reseau !\n Verifiez que vous soyez connectes et retentez.\n \
-Si après un nouveau test, vous avez de nouveau ce message d'erreur, \nle site est en maintenance ou rencontre \
+Si apres un nouveau test, vous avez de nouveau ce message d'erreur, \nle site est en maintenance ou rencontre \
 des problemes de connection.\n");
 		return (-1);
 	}
