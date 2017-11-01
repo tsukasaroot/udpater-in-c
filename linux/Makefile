@@ -1,4 +1,6 @@
-SRCS		=	src/updater.c
+SRCS		=	src/updater.c	\
+			src/getver.c	\
+			src/utilities.c
 
 OBJS		=	$(SRCS:.c=.o)
 

@@ -25,6 +25,7 @@ int check_newver(char *path, datas *datas)
 	strcat(type, ".ver");
 	fd = fopen(type, "r");
 	if (fd != NULL) {
+		fscanf(fd, "%f", &datas->nversion);
 		if (datas->version < datas->nversion)
 			return (1);
 		else
@@ -53,41 +54,6 @@ int get_file(char *path, datas *datas)
 	return (0);
 }
 
-int get_ver(char *path, datas *datas)
-{
-	FILE *fd = NULL;
-	char version_path[100] = "VERSIONS/";
-	char cmd[100] = "mv ";
-	char cmd2[100] = "wget ";
-
-	strcat(version_path, path);
-	strcat(version_path, ".ver");
-	fd = fopen(version_path, "r+");
-	if (fd != NULL) {
-		get_file(path, datas);
-		strcat(cmd, "new");
-		strcat(cmd, path);
-		strcat(cmd, ".ver ");
-		strcat(cmd, version_path);
-		system(cmd);
-		fclose(fd);
-	} else {
-		get_patch(path, datas);
-		strcat(cmd2, datas->site);
-		strcat(cmd2, "/VERSIONS/");
-		strcat(cmd2, "new");
-		strcat(cmd2, path);
-		strcat(cmd2, ".ver");
-		system(cmd2);
-		strcat(cmd, "new");
-		strcat(cmd, path);
-		strcat(cmd, ".ver ");
-		strcat(cmd, version_path);
-		system(cmd);
-	}
-	return (0);
-}
-
 void check_dir()
 {
 	if (access("VERSIONS", 0) == -1)
@@ -97,12 +63,10 @@ void check_dir()
 int main()
 {
 	datas datas;
-	int v1;
-	int v1_1;
-	int v2;
-	int v2_1;
-	int v3;
-	int v3_1;
+	float v1;
+	float v1_1;
+	float v2;
+	float v2_1;
 
 	datas.site = malloc(sizeof(char) * (32 + 1));
 	datas.site = "https://www.dothackers-fansub.fr";
@@ -124,12 +88,10 @@ des problemes de connection.\n");
 	v2_1 = datas.nversion;
 	get_ver("image", &datas);
 	clrscr();
-	fprintf(stdout, "Version actuelle evimage: %f\n", v1);
-	fprintf(stdout, "Version en ligne evimage %f\n", v1_1);
-	remove("newevimage.ver");
-	remove("newdata.ver");
-	remove("newimage.ver");
-	remove("NUL");
+	display_version(v1, v1_1, "evimage");
+	display_version(v2, v2_1, "image");
+	display_version(datas.version, datas.nversion, "data");
+	remove_useless_files();
 	system("wine gsen.exe");
 	return (0);
 }
