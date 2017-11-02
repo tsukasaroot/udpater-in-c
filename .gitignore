@@ -1,10 +1,6 @@
-#Ignorer les .xp3
-*.xp3
-#ingnorer le dossier VERSIONS
-VERSIONS
 *.o
-updater
-NUL
-nul
 *~
 \#*#
+updater
+*new*
+*.a

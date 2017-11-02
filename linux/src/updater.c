@@ -5,7 +5,7 @@ int get_patch(char *path, datas *datas)
 	char cmd[100] = "wget ";
 	char tpe[50];
 
-	strcat(tpe, path);
+	strcpy(tpe, path);
 	strcat(tpe, ".xp3");
 	remove(tpe);
 	strcat(cmd, datas->site);
@@ -47,9 +47,9 @@ int get_file(char *path, datas *datas)
 	strcat(cmd, path);
 	strcat(cmd, ".ver > NUL");
 	system(cmd);
-	if (check_newver(path, datas) == 1)
+	if (check_newver(path, datas) == 1) {
 		get_patch(path, datas);
-	else
+	}  else
 		return (0);
 	return (0);
 }
@@ -74,6 +74,7 @@ int main()
 		fprintf(stdout, "Erreur reseau !\n Verifiez que vous soyez connectes et retentez.\n \
 Si apres un nouveau test, vous avez de nouveau ce message d'erreur, \nle site est en maintenance ou rencontre \
 des problemes de connection.\n");
+		system("wine gsen.exe");
 		return (-1);
 	}
 	fprintf(stdout, "-----------------------------------------------------------------\n\n");
