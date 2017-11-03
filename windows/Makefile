@@ -4,12 +4,14 @@
 ## Made by Jordan Rouco miguez
 ## Login   <jordan.roucom@epitech.net>
 ##
-## Last update Wed Nov  1 14:04:21 2017 Tsukasa
+## Last update Fri Nov  3 18:31:15 2017 Tsukasa
 ##
 
 CC	=	i686-w64-mingw32-gcc -std=c99
 
-SRCS	=	src/updater.c
+SRCS	=	src/updater.c	\
+		src/getver.c	\
+		src/utilities.c
 
 RM	=	rm -f
 
@@ -19,23 +21,16 @@ NAME	=	updater.exe
 
 CFLAGS	=	-Wall -Wextra -Werror -fno-builtin -Iinclude
 
-OPT	=	cd make_linux && make
-
-all:	$(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-#	$(OPT)
-wclean:
-	$(RM) $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
-#	$(OPT) clean
 
-fclean: wclean
+fclean: clean
 	$(RM) $(NAME)
-#	$(OPT) fclean
 
 re: fclean all
 
